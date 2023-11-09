@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block contenido %}
+<a button type="button" class="btn btn-primary" href="{% url 'lista_estudiantes' %}">Ver Todo</a>
+<br><br><br>
+<h3>Nuevo Estudiante</h3>
+<br>
+<form method="post">
+     {% csrf_token %}
+    {{ formulario.as_p }}
+    {{ formulario.errors }}
+    <input type="submit" value="Enviar" />
+</form>
+{% endblock contenido %}

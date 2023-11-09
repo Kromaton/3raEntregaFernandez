@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block titulo %}
+<title> RECORDERHouse</title>
+{% endblock titulo%}
+{% block contenido %}
+<a button type="button" class="btn btn-primary" href="{% url 'lista_estudiantes' %}">Ver Todo</a>
+<a button type="button" class="btn btn-primary" href="{% url 'crear_estudiante' %}">Crear</a>
+<br><br>
+<form action="{% url 'buscar_estudiantes' %}" method='post'>
+    {% csrf_token %}
+    <input type="text" name="busqueda">
+    <br><br>
+    <input type="submit" value="Buscar por nombre">
+</form>
+<br><br>
+<ul>
+    {% for estudiante in Estudiantes %}
+    <li>
+    {{ estudiante.estudiante_lastname}}, {{estudiante.estudiante_name}}
+    </li>
+    {% endfor %}
+</ul>
+{% endblock contenido %}
